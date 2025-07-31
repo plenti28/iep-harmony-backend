@@ -13,7 +13,7 @@ const pdf = require('pdf-parse'); // A library to extract text from .pdf files
 // --- 2. Initialize the Application ---
 
 const app = express(); // Create an instance of the Express application
-const port = 3001; // The port the server will listen on (can be any available port)
+const port = process.env.PORT || 3001; // Use Render's port or 3001 for local dev
 
 // --- 3. Configure Middleware ---
 
@@ -78,5 +78,5 @@ app.post('/upload', upload.single('file'), async (req, res) => {
 
 // Tell the Express app to listen for requests on the specified port.
 app.listen(port, () => {
-  console.log(`File processing server is running on http://localhost:${port}`);
+  console.log(`File processing server is running on port ${port}`);
 });
